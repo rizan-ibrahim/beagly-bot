@@ -36,24 +36,33 @@ bot.on("callback_query", (query) => {
     case "whybeagly":
       response = `Why Beagly?\n\n✅ A meme coin with voice and vision\n✅ Fair launch, no shady moves\n✅ Built by the community, for the community\n✅ Storytelling meets Web3\n\nBeagly isn’t begging for attention — he’s taking the spotlight. 🐶🎤`;
       break;
+
     case "socials":
-      response = `🔗 Beagly's World:\n🐦 X Platform: https://x.com/Beagly_Beagly\n📺 YouTube: https://www.youtube.com/@Beagly_Stories\n💬 Telegram: https://t.me/+LcorB830Wgc1Mzg0`;
+      response = `🔗 Beagly's World:\n
+🐦 X Platform: https://x.com/Beagly_Beagly
+📺 YouTube: https://www.youtube.com/@Beagly_Beagly
+📸 Instagram: https://www.instagram.com/wise.beagly/
+💬 Telegram: https://t.me/+LcorB830Wgc1Mzg0`;
       break;
+
     case "beagly":
       response = `🔥 Beagly is not just a token — he’s a character, a storyteller, a meme with meaning.\n\n👑 No dev dump. No silence. Beagly speaks.\n🚀 The community listens. The mission grows.\n💥 Let’s bark our way to the moon.`;
       break;
+
     case "raid":
-      response = `🚨 RAID MODE ACTIVATED 🚨\n\n🐶 It’s time to flood the X platform.\n📢 Copy-paste this and post it NOW:\n\n"Beagly isn’t just a memecoin — he’s the host of stories, the voice of the people.\n\n📺 YouTube: youtube.com/@Beagly_Stories\n🐦 X: x.com/Beagly_Beagly\n🐾 Join us: t.me/BiglyCoin\n#Beagly #Memecoin #Solana"`;
+      response = `🚨 RAID MODE ACTIVATED 🚨\n\n🐶 It’s time to flood the X platform.\n📢 Copy-paste this and post it NOW:\n\n"Beagly isn’t just a memecoin — he’s the host of stories, the voice of the people.\n\n📺 YouTube: https://www.youtube.com/@Beagly_Beagly\n🐦 X: https://x.com/Beagly_Beagly\n🐾 Join us: https://t.me/BiglyCoin\n#Beagly #Memecoin #Solana"`;
       break;
+
     case "moon":
       response = `🌕 Beagly has left Earth.\n\nThe meme. The mission. The moon.\nThis isn’t hype — it’s destiny.\n\n🚀 #BeaglyToTheMoon #MemeSeason`;
       break;
+
     default:
       response = "❓ Unknown command.";
   }
 
   bot.sendMessage(chatId, response);
-  bot.answerCallbackQuery(query.id); // remove loading spinner
+  bot.answerCallbackQuery(query.id);
 });
 
 // 👋 Auto-Welcome New Members
