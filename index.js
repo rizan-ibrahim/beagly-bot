@@ -4,6 +4,8 @@ dotenv.config();
 
 const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 
+console.log("✅ Beagly Bot with inline buttons is running...");
+
 // 🔥 Start Message
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(
@@ -59,13 +61,28 @@ bot.on("new_chat_members", (msg) => {
   msg.new_chat_members.forEach((user) => {
     const name = user.first_name || "friend";
 
-    bot.sendMessage(
-      msg.chat.id,
-      `Woof! Woof! 🐶\n👋 Welcome ❤️${name}❤️ to the Beagly Army.\n\nRemember: Beagly is not static. It’s not hype.\nIt’s just a matter of time before Beagly flies high 🚀🐶\n\nThe ambition behind Beagly is deeper than memes.\nLucky you — you joined early.\n\n👁️ Keep your eyes on Beagly.\n🔒 Note: You can only chat with the bot privately.`
-    );
+    const welcomeMessage = `Woof! Woof! 🐶
+👋 Welcome ❤️${name}❤️ to the Beagly Army.
+
+Remember: Beagly is not static. It’s not hype.
+It’s just a matter of time before Beagly flies high 🚀🐶
+
+The ambition behind Beagly is deeper than memes.
+Lucky you — you joined early.
+
+👁️ Keep your eyes on Beagly.
+🔒 Note: You can only chat with the bot privately.
+
+🚫 The group chat is currently closed for a while.
+🛡️ This is a temporary measure to protect the community.
+🌱 It will reopen as the Beagly community continues to grow.
+Stay tuned and keep barking! 🐾`;
+
+    bot.sendMessage(msg.chat.id, welcomeMessage);
   });
 });
 
+// 🧹 Clear Command (Restricted to Owner)
 bot.onText(/\/clear/, async (msg) => {
   const chatId = msg.chat.id;
 
@@ -80,7 +97,7 @@ bot.onText(/\/clear/, async (msg) => {
     try {
       await bot.deleteMessage(chatId, messageId - i);
     } catch (err) {
-      // Skips messages that can't be deleted (e.g., too old or admin posts)
+      // Silently skip messages that can't be deleted
     }
   }
 
